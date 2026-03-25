@@ -1,13 +1,50 @@
 {% extends 'base.html' %}
 
-<h1> Welcome to students landing </h1>
+{% block body %}
+  <section class="section" aria-label="Students landing">
+    <div class="section-head">
+      <div>
+        <h2>Welcome to Students</h2>
+        <p class="lead-small">A clean, modern interface to view student records clearly.</p>
+      </div>
+      <div style="display:flex; gap:16px; flex-wrap:wrap; justify-content:flex-end;">
+        <a class="btn btn-primary" href="{% url 'students.index' %}">View Students</a>
+        <a class="btn" href="{% url 'departments.landing' %}">Departments</a>
+      </div>
+    </div>
 
- {% block main %}
-<h1> Welcome to students landing </h1>
+    <div class="hero-grid">
+      <div class="panel reveal">
+        <h3 style="margin: 0 0 8px;">Designed for clarity</h3>
+        <p class="muted" style="margin: 0; line-height: 1.7;">
+          Browse students and open individual profiles without clutter. The layout scales well on mobile and desktop.
+        </p>
 
-{% endblock %}
+        <div class="kpi-grid">
+          <div class="kpi">
+            <div class="kpi-label">Clean UI</div>
+            <div class="kpi-value">Professional</div>
+          </div>
+          <div class="kpi">
+            <div class="kpi-label">Responsive</div>
+            <div class="kpi-value">Mobile-ready</div>
+          </div>
+          <div class="kpi">
+            <div class="kpi-label">Navigation</div>
+            <div class="kpi-value">Simple</div>
+          </div>
+        </div>
+      </div>
 
- {% block content %}
-<h1> Welcome to students landing </h1>
-
+      <div class="panel reveal">
+        <h3 style="margin: 0 0 8px;">Start here</h3>
+        <p class="muted" style="margin: 0 0 16px; line-height: 1.7;">
+          Use the student list to quickly open each profile.
+        </p>
+        <a class="btn btn-primary" style="width: 100%;" href="{% url 'students.index' %}">
+          Open Student List
+        </a>
+      </div>
+    </div>
+  </section>
 {% endblock %}

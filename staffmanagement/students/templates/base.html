@@ -2,7 +2,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Manrope:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <title>ITI | Staff & Students</title>
        <style>
       :root {
         --bg0: #050816;
@@ -17,11 +25,12 @@
         --glass: rgba(255, 255, 255, 0.08);
         --glass2: rgba(255, 255, 255, 0.12);
 
-        --p1: #8b5cf6; /* violet */
-        --p2: #34d399; /* green */
-        --p3: #22d3ee; /* cyan */
-        --p4: #fb923c; /* orange */
-        --p5: #f43f5e; /* red */
+        /* Modern blue + warm yellow accents */
+        --p1: #FDE68A; /* amber */
+        --p2: #A7F3D0; /* mint */
+        --p3: #2563EB; /* primary */
+        --p4: #F59E0B; /* yellow/orange */
+        --p5: #93C5FD; /* light blue */
 
         --radius-xl: 22px;
         --radius-lg: 16px;
@@ -45,9 +54,9 @@
         text-rendering: optimizeLegibility;
         color: var(--text);
         background:
-          radial-gradient(1000px 800px at 15% 10%, rgba(139, 92, 246, 0.28), transparent 58%),
-          radial-gradient(900px 700px at 80% 20%, rgba(34, 211, 238, 0.24), transparent 58%),
-          radial-gradient(800px 600px at 70% 85%, rgba(52, 211, 153, 0.18), transparent 62%),
+          radial-gradient(1000px 800px at 15% 10%, rgba(240, 226, 195, 0.28), transparent 58%),
+          radial-gradient(900px 700px at 80% 20%, rgba(130, 178, 192, 0.24), transparent 58%),
+          radial-gradient(800px 600px at 70% 85%, rgba(195, 222, 221, 0.18), transparent 62%),
           linear-gradient(180deg, var(--bg0), var(--bg1));
         overflow-x: hidden;
       }
@@ -84,7 +93,7 @@
       }
       .skip-link:focus {
         transform: translateY(0);
-        outline: 2px solid rgba(139, 92, 246, 0.75);
+        outline: 2px solid rgba(240, 226, 195, 0.75);
         outline-offset: 3px;
       }
 
@@ -127,7 +136,7 @@
         background:
           radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.6), transparent 45%),
           linear-gradient(135deg, var(--p1), var(--p3), var(--p2));
-        box-shadow: 0 14px 40px rgba(124, 58, 237, 0.35);
+        box-shadow: 0 14px 40px rgba(240, 226, 195, 0.35);
         border: 1px solid rgba(255, 255, 255, 0.2);
       }
 
@@ -177,19 +186,19 @@
       }
       .btn-primary {
         border-color: rgba(255, 255, 255, 0.18);
-        background: linear-gradient(135deg, rgba(139, 92, 246, 0.55), rgba(34, 211, 238, 0.35));
-        box-shadow: 0 22px 55px rgba(124, 58, 237, 0.25);
+        background: linear-gradient(135deg, rgba(240, 226, 195, 0.6), rgba(130, 178, 192, 0.35));
+        box-shadow: 0 22px 55px rgba(240, 226, 195, 0.25);
       }
       .btn-primary:hover {
-        background: linear-gradient(135deg, rgba(139, 92, 246, 0.68), rgba(34, 211, 238, 0.45));
-        box-shadow: 0 28px 75px rgba(124, 58, 237, 0.3);
+        background: linear-gradient(135deg, rgba(240, 226, 195, 0.72), rgba(130, 178, 192, 0.5));
+        box-shadow: 0 28px 75px rgba(240, 226, 195, 0.3);
       }
 
       .btn:focus-visible,
       .nav-links a:focus-visible,
       .hamburger:focus-visible,
       .input:focus-visible {
-        outline: 2px solid rgba(139, 92, 246, 0.75);
+        outline: 2px solid rgba(240, 226, 195, 0.75);
         outline-offset: 3px;
       }
 
@@ -202,7 +211,7 @@
         color: var(--text);
       }
       .hamburger:focus {
-        outline: 2px solid rgba(139, 92, 246, 0.78);
+        outline: 2px solid rgba(240, 226, 195, 0.78);
         outline-offset: 3px;
       }
 
@@ -242,7 +251,7 @@
         letter-spacing: -0.02em;
       }
       .gradient-text {
-        background: linear-gradient(135deg, var(--p1) 0%, #60a5fa 30%, var(--p2) 55%, var(--p3) 75%, var(--p4) 100%);
+        background: linear-gradient(135deg, var(--p1) 0%, var(--p3) 30%, var(--p2) 55%, var(--p3) 75%, var(--p4) 100%);
         -webkit-background-clip: text;
         background-clip: text;
         color: transparent;
@@ -284,7 +293,7 @@
         height: 10px;
         border-radius: 999px;
         background: linear-gradient(135deg, var(--p1), var(--p3));
-        box-shadow: 0 0 0 4px rgba(124, 58, 237, 0.2);
+        box-shadow: 0 0 0 4px rgba(240, 226, 195, 0.2);
       }
 
       .hero-card {
@@ -303,7 +312,7 @@
         inset: -80px -120px auto auto;
         width: 260px;
         height: 260px;
-        background: radial-gradient(circle, rgba(139, 92, 246, 0.45), transparent 60%);
+        background: radial-gradient(circle, rgba(240, 226, 195, 0.45), transparent 60%);
         transform: rotate(20deg);
         pointer-events: none;
       }
@@ -313,7 +322,7 @@
         inset: auto auto -140px -140px;
         width: 300px;
         height: 300px;
-        background: radial-gradient(circle, rgba(52, 211, 153, 0.28), transparent 60%);
+        background: radial-gradient(circle, rgba(195, 222, 221, 0.28), transparent 60%);
         pointer-events: none;
       }
 
@@ -403,15 +412,15 @@
         inset: -120px -160px auto auto;
         width: 260px;
         height: 260px;
-        background: radial-gradient(circle, rgba(139, 92, 246, 0.2), transparent 60%);
+        background: radial-gradient(circle, rgba(240, 226, 195, 0.2), transparent 60%);
         pointer-events: none;
         transform: rotate(10deg);
       }
       .feature:nth-child(2):before {
-        background: radial-gradient(circle, rgba(52, 211, 153, 0.18), transparent 60%);
+        background: radial-gradient(circle, rgba(195, 222, 221, 0.18), transparent 60%);
       }
       .feature:nth-child(3):before {
-        background: radial-gradient(circle, rgba(34, 211, 238, 0.18), transparent 60%);
+        background: radial-gradient(circle, rgba(130, 178, 192, 0.18), transparent 60%);
       }
 
       .icon {
@@ -578,8 +587,8 @@
         overflow: hidden;
       }
       .price-card.featured {
-        border-color: rgba(139, 92, 246, 0.65);
-        background: linear-gradient(180deg, rgba(139, 92, 246, 0.22), rgba(255, 255, 255, 0.05));
+        border-color: rgba(240, 226, 195, 0.65);
+        background: linear-gradient(180deg, rgba(240, 226, 195, 0.22), rgba(255, 255, 255, 0.05));
       }
       .badge {
         display: inline-flex;
@@ -587,8 +596,8 @@
         gap: 10px;
         padding: 8px 10px;
         border-radius: 999px;
-        border: 1px solid rgba(124, 58, 237, 0.45);
-        background: rgba(124, 58, 237, 0.18);
+        border: 1px solid rgba(240, 226, 195, 0.45);
+        background: rgba(240, 226, 195, 0.18);
         font-weight: 900;
         font-size: 0.9rem;
       }
@@ -633,8 +642,8 @@
         border-radius: 26px;
         border: 1px solid rgba(255, 255, 255, 0.16);
         background:
-          radial-gradient(800px 300px at 0% 0%, rgba(139, 92, 246, 0.26), transparent 55%),
-          radial-gradient(700px 320px at 100% 0%, rgba(34, 211, 238, 0.2), transparent 55%),
+          radial-gradient(800px 300px at 0% 0%, rgba(240, 226, 195, 0.26), transparent 55%),
+          radial-gradient(700px 320px at 100% 0%, rgba(130, 178, 192, 0.2), transparent 55%),
           rgba(255, 255, 255, 0.06);
         backdrop-filter: blur(12px);
         padding: 20px;
@@ -752,6 +761,429 @@
           animation: none !important;
         }
       }
+
+      /* Modern light design system (final override) */
+      :root {
+        --accent: #2563EB;
+        --bg: radial-gradient(900px 650px at 18% 0%, rgba(37, 99, 235, 0.14) 0%, rgba(37, 99, 235, 0) 60%),
+          radial-gradient(800px 600px at 55% 15%, rgba(245, 158, 11, 0.14) 0%, rgba(245, 158, 11, 0) 60%),
+          radial-gradient(900px 650px at 85% 20%, rgba(99, 102, 241, 0.12) 0%, rgba(99, 102, 241, 0) 60%),
+          linear-gradient(180deg, #F8FAFC 0%, #EEF2FF 100%);
+        --surface: #FFFFFF;
+        --text: #0B1220;
+        --muted: #475569;
+        --border: rgba(15, 23, 42, 0.12);
+        --ring: rgba(37, 99, 235, 0.30);
+
+        --radius: 16px;
+
+        /* 8pt spacing grid */
+        --u: 8px;
+        --space-1: calc(var(--u) * 1);
+        --space-2: calc(var(--u) * 2);
+        --space-3: calc(var(--u) * 3);
+        --space-4: calc(var(--u) * 4);
+        --space-5: calc(var(--u) * 5);
+
+        --max: 1120px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        background: var(--bg) !important;
+        color: var(--text) !important;
+        font-family: "Manrope", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif !important;
+      }
+
+      body::before {
+        display: none !important;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      .brand,
+      .brand * {
+        font-family: "Fraunces", ui-serif, Georgia, "Times New Roman", Times, serif !important;
+        letter-spacing: -0.02em;
+      }
+
+      .container {
+        max-width: var(--max) !important;
+        padding-left: var(--space-3) !important;
+        padding-right: var(--space-3) !important;
+      }
+
+      .page-main {
+        padding: var(--space-4) 0 var(--space-5) !important;
+      }
+
+      html,
+      body {
+        min-height: 100%;
+      }
+
+      body {
+        display: flex;
+        flex-direction: column;
+      }
+
+      main#main {
+        flex: 1 0 auto;
+      }
+
+      footer.footer {
+        margin-top: auto;
+      }
+
+      /* Disable old decorative blobs in student base */
+      .hero-card:before,
+      .hero-card:after,
+      .feature:before,
+      .chip-dot {
+        display: none !important;
+      }
+
+      .site-header,
+      .nav-wrap {
+        position: sticky;
+        top: 0;
+        z-index: 60;
+        background: rgba(255, 255, 255, 0.56) !important;
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid var(--border) !important;
+        box-shadow: none !important;
+      }
+
+      .nav {
+        padding: var(--space-2) 0 !important;
+        align-items: center;
+      }
+
+      .brand-mark {
+        width: 40px;
+        height: 40px;
+        border-radius: 14px;
+        border: 1px solid var(--border);
+        background: linear-gradient(135deg, rgba(37, 99, 235, 0.22), rgba(37, 99, 235, 0.06));
+        box-shadow: none !important;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--accent);
+      }
+
+      .logo-icon {
+        width: 22px;
+        height: 22px;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: var(--space-2);
+        align-items: center;
+      }
+
+      .nav-links a {
+        padding: 10px 12px;
+        border-radius: var(--radius);
+        border: 1px solid transparent;
+        color: var(--muted) !important;
+        font-weight: 600;
+        transition: background 160ms ease, border-color 160ms ease, transform 160ms ease;
+      }
+      .nav-links a:hover {
+        background: rgba(37, 99, 235, 0.12);
+        border-color: rgba(37, 99, 235, 0.35);
+        color: var(--text) !important;
+        transform: translateY(-1px);
+      }
+
+      .nav-cta {
+        display: flex;
+        gap: var(--space-2);
+        align-items: center;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        padding: 10px 14px;
+        border-radius: var(--radius);
+        border: 1px solid var(--border);
+        background: var(--surface);
+        color: var(--text) !important;
+        font-weight: 700;
+        transition: transform 170ms ease, background 170ms ease, border-color 170ms ease;
+        box-shadow: none !important;
+      }
+      .btn:hover {
+        transform: translateY(-1px);
+        background: rgba(37, 99, 235, 0.09);
+        border-color: rgba(37, 99, 235, 0.45);
+      }
+
+      .btn-primary {
+        border-color: rgba(37, 99, 235, 0.45) !important;
+        background: linear-gradient(135deg, rgba(37, 99, 235, 0.22), rgba(37, 99, 235, 0.08)) !important;
+      }
+
+      .btn:focus-visible,
+      .nav-links a:focus-visible,
+      .hamburger:focus-visible,
+      input:focus-visible,
+      textarea:focus-visible,
+      select:focus-visible {
+        outline: 0;
+        box-shadow: 0 0 0 4px var(--ring) !important;
+      }
+
+      .hamburger {
+        border: 1px solid var(--border) !important;
+        background: var(--surface) !important;
+        color: var(--text) !important;
+      }
+
+      .mobile-panel {
+        background: rgba(247, 244, 238, 0.96) !important;
+        border: 1px solid var(--border);
+        padding: var(--space-2);
+        border-radius: var(--radius);
+      }
+      .mobile-panel a {
+        border-radius: var(--radius);
+        border: 1px solid transparent;
+      }
+
+      .skip-link {
+        background: var(--surface) !important;
+        border: 1px solid var(--border) !important;
+        color: var(--text) !important;
+      }
+
+      .skip-link:focus {
+        outline: 0;
+        box-shadow: 0 0 0 4px var(--ring) !important;
+      }
+
+      /* Content */
+      .section {
+        padding: var(--space-4) 0 !important;
+      }
+      .section-head {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        gap: var(--space-3);
+        margin-bottom: var(--space-3);
+      }
+      .section h2 {
+        font-size: 1.9rem;
+        margin: 0;
+      }
+      .lead-small {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.7;
+      }
+
+      .panel {
+        background: var(--surface) !important;
+        border: 1px solid var(--border) !important;
+        border-radius: var(--radius) !important;
+        box-shadow: none !important;
+      }
+
+      /* Table */
+      .table-wrap {
+        overflow-x: auto;
+        border-radius: calc(var(--radius) - 4px);
+      }
+      .data-table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0;
+        min-width: 720px;
+      }
+      .data-table thead th {
+        text-align: left;
+        padding: var(--space-2) var(--space-3);
+        font-size: 0.95rem;
+        font-weight: 800;
+        color: var(--text);
+        background: rgba(37, 99, 235, 0.10);
+        border-bottom: 1px solid var(--border);
+        white-space: nowrap;
+      }
+      .data-table tbody td {
+        padding: var(--space-2) var(--space-3);
+        border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+        color: var(--muted);
+        white-space: nowrap;
+      }
+      .data-table tbody tr:hover td {
+        background: rgba(37, 99, 235, 0.08);
+        color: var(--text);
+      }
+
+      /* Inputs (premium focus) */
+      .input {
+        width: 100%;
+        padding: var(--space-2) var(--space-3);
+        border-radius: var(--radius);
+        border: 1px solid var(--border);
+        background: rgba(255, 255, 255, 0.92);
+        color: var(--text);
+        transition: box-shadow 160ms ease, border-color 160ms ease, background 160ms ease;
+      }
+      .input::placeholder {
+        color: rgba(71, 85, 105, 0.7);
+      }
+      .input:focus-visible {
+        outline: 0;
+        box-shadow: 0 0 0 4px var(--ring) !important;
+        border-color: rgba(37, 99, 235, 0.7);
+        background: var(--surface);
+      }
+
+      /* Footer */
+      .footer {
+        background: rgba(255, 255, 255, 0.78);
+        border-top: 1px solid var(--border);
+        margin-top: var(--space-5);
+        padding: var(--space-4) 0;
+        color: var(--muted) !important;
+        backdrop-filter: none;
+      }
+
+      .footer-grid {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: var(--space-2);
+        flex-wrap: wrap;
+      }
+
+      .footer-links {
+        display: flex;
+        gap: var(--space-2);
+        flex-wrap: wrap;
+      }
+
+      .footer-links a {
+        background: transparent;
+      }
+      .footer-links a {
+        color: var(--muted);
+        font-weight: 700;
+        padding: 8px 12px;
+        border-radius: var(--radius);
+        border: 1px solid transparent;
+        transition: background 160ms ease, border-color 160ms ease;
+      }
+      .footer-links a:hover {
+        background: rgba(37, 99, 235, 0.14);
+        border-color: rgba(37, 99, 235, 0.38);
+        color: var(--text);
+      }
+
+      /* Page-specific layout helpers (lightweight) */
+      .hero-grid {
+        display: grid;
+        grid-template-columns: 1.15fr 0.85fr;
+        gap: var(--space-4);
+        align-items: start;
+      }
+
+      .kpi-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: var(--space-2);
+        margin-top: var(--space-4);
+      }
+
+      .kpi {
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: var(--space-2);
+        background: rgba(37, 99, 235, 0.06);
+      }
+
+      .kpi .kpi-label {
+        color: var(--muted);
+        font-weight: 800;
+        font-size: 0.9rem;
+      }
+      .kpi .kpi-value {
+        margin-top: var(--space-1);
+        font-weight: 900;
+        font-size: 1.25rem;
+      }
+
+      .profile-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: var(--space-2);
+      }
+
+      .kv {
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        background: rgba(37, 99, 235, 0.06);
+        padding: var(--space-2);
+      }
+
+      .kv .kv-label {
+        color: var(--muted);
+        font-weight: 800;
+        font-size: 0.9rem;
+      }
+      .kv .kv-value {
+        margin-top: var(--space-1);
+        font-weight: 900;
+        font-size: 1.1rem;
+      }
+
+      @media (max-width: 860px) {
+        .hero-grid {
+          grid-template-columns: 1fr;
+        }
+        .kpi-grid {
+          grid-template-columns: 1fr;
+        }
+        .profile-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* Motion: reveal on load (fade + slight translate) */
+      .reveal {
+        opacity: 0;
+        transform: translateY(10px);
+        transition: opacity 520ms ease, transform 520ms ease;
+      }
+      .reveal.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .reveal {
+          opacity: 1;
+          transform: none;
+          transition: none;
+        }
+      }
     </style>
 </head>
 <body>
@@ -760,21 +1192,23 @@
     <div class="nav-wrap">
       <div class="container">
         <header class="nav" aria-label="Primary navigation">
-          <div class="brand" aria-label="ITI-Open Source">
-            <div class="brand-mark" aria-hidden="true"></div>
-            <span>ITI-Open Source</span>
+          <div class="brand" aria-label="Zagzig">
+            <div class="brand-mark" aria-hidden="true">
+              <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M7 17L17 7" />
+                <path d="M9 7H17V15" />
+              </svg>
+            </div>
+            <span>ITI</span>
           </div>
 
-          <nav class="nav-links" aria-label="Sections">
+          <nav class="nav-links" aria-label="Primary">
             <a href="{% url 'students.index' %}">Students</a>
-            <a href="#about">About</a>
-            <a href="#pricing">Pricing</a>
-            <a href="#faq">FAQ</a>
+            <a href="{% url 'departments.landing' %}">Departments</a>
           </nav>
 
           <div class="nav-cta" aria-label="Call to actions">
-            <a class="btn secondary" href="#contact">Contact</a>
-            <a class="btn btn-primary" href="#pricing">Get Started</a>
+            <a class="btn btn-primary" href="{% url 'departments.landing' %}">Departments</a>
 
             <button class="hamburger" type="button" id="mobileToggle" aria-expanded="false" aria-controls="mobilePanel">
               <span aria-hidden="true">Menu</span>
@@ -783,43 +1217,34 @@
         </header>
 
         <div class="mobile-panel" id="mobilePanel" hidden>
-          <a href="#features" class="mobile-link">Features</a>
-          <a href="#about" class="mobile-link">About</a>
-          <a href="#pricing" class="mobile-link">Pricing</a>
-          <a href="#faq" class="mobile-link">FAQ</a>
-          <a href="#contact" class="mobile-link">Contact</a>
+          <a href="{% url 'students.index' %}" class="mobile-link">Students</a>
+          <a href="{% url 'departments.landing' %}" class="mobile-link">Departments</a>
           <div class="divider" aria-hidden="true"></div>
-          <a class="btn btn-primary" href="#pricing" style="width: 100%;">Get Started</a>
+          <a class="btn btn-primary" href="{% url 'departments.landing' %}" style="width: 100%;">Departments</a>
         </div>
       </div>
     </div>
 
-    <div style="color: red">
-        {% block content %}
-        {% endblock %}
-    </div>
-
-    <div style="background-color: beige;">
-        {% block main %}
-        {% endblock %}
-    </div>
-
-    <div>
-        {% block body %}
-        {% endblock %}
-    </div>
+    <main id="main" class="container page-main reveal" role="main">
+      {% block content %}{% endblock %}
+      {% block main %}{% endblock %}
+      {% block body %}{% endblock %}
+    </main>
 
       <footer class="footer" aria-label="Footer">
         <div class="footer-grid">
-          <div class="brand" aria-label="ITI-Open Source footer brand">
-            <div class="brand-mark" aria-hidden="true" style="width:32px;height:32px;border-radius:12px;"></div>
-            <span>ITI-Open Source</span>
+          <div class="brand" aria-label="Zagzig footer brand">
+            <div class="brand-mark" aria-hidden="true" style="width:32px;height:32px;border-radius:12px;">
+              <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M7 17L17 7" />
+                <path d="M9 7H17V15" />
+              </svg>
+            </div>
+            <span>ITI</span>
           </div>
           <div class="footer-links" aria-label="Footer links">
-            <a href="#features">Features</a>
-            <a href="#about">About</a>
-            <a href="#pricing">Pricing</a>
-            <a href="#faq">FAQ</a>
+            <a href="{% url 'students.index' %}">Students</a>
+            <a href="{% url 'departments.landing' %}">Departments</a>
           </div>
           <div class="muted" style="font-size:0.92rem;">
             &copy; <span id="year"></span> ITI-Open Source. All rights reserved.
@@ -855,6 +1280,19 @@
 
         var year = document.getElementById("year");
         if (year) year.textContent = String(new Date().getFullYear());
+
+        // Entrance animation for key elements
+        var reducedMotion =
+          window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        document.querySelectorAll(".reveal").forEach(function (el) {
+          if (reducedMotion) {
+            el.classList.add("is-visible");
+            return;
+          }
+          requestAnimationFrame(function () {
+            el.classList.add("is-visible");
+          });
+        });
       })();
     </script>
 </body>

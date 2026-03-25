@@ -1,7 +1,39 @@
 {% extends 'base.html' %}
 
 {% block body %}
-    {{student.id}}
-    {{student.name}}
-{{student.salary}}
+  <section class="section" aria-label="Student profile">
+    <div class="section-head">
+      <div>
+        <h2>Student Profile</h2>
+        <p class="lead-small">Details for the selected student.</p>
+      </div>
+      <a class="btn" href="{% url 'students.index' %}">Back to Students</a>
+    </div>
+
+    <div class="panel reveal">
+      <div class="profile-grid">
+        <div class="kv">
+          <div class="kv-label">ID</div>
+          <div class="kv-value">{{ student.id }}</div>
+        </div>
+        <div class="kv">
+          <div class="kv-label">Name</div>
+          <div class="kv-value">{{ student.name }}</div>
+        </div>
+        <div class="kv">
+          <div class="kv-label">Track</div>
+          <div class="kv-value">{{ student.track }}</div>
+        </div>
+        <div class="kv">
+          <div class="kv-label">Salary</div>
+          <div class="kv-value">{{ student.salary }}</div>
+        </div>
+      </div>
+
+      <div style="margin-top:24px; display:flex; gap:16px; flex-wrap:wrap;">
+        <a class="btn btn-primary" href="{% url 'students.index' %}">Open List</a>
+        <a class="btn" href="{% url 'departments.landing' %}">Departments</a>
+      </div>
+    </div>
+  </section>
 {% endblock %}
