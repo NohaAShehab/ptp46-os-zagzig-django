@@ -41,3 +41,11 @@ def student_profile(request, id):
     return HttpResponse(f"<h1 style='color:red'> Hi {student['id']} {student['name']}</h1>")
 
 
+# return content in html page ??
+
+
+def landing(request):
+    # return ...  return with page --> landing.html ??
+    return render(request, "students/landing.html")
+
+

@@ -16,7 +16,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from students.views import  home, hi, profile, student_profile
+from students.views import  home, hi, profile, student_profile, landing
+from departments.views import landing as dept_landing
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('home', home, name='home'),
@@ -24,4 +25,6 @@ urlpatterns = [
     # username is param read from the url
     path('user/<username>', profile, name='profile'),
     path('student/<int:id>', student_profile, name='student_profile'),
+    path('land', landing, name='landing'),
+    path('department/landing', dept_landing, name='departments.landing'),
 ]

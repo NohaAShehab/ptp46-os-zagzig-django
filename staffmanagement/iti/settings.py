@@ -29,7 +29,7 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
-
+## these are the applications associated with the project ?
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -37,6 +37,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # once you create new app you must add it to the installed apps
+    # so you can access templates , -- run admin. actions on the project
+    # use models, migrations, ----
+    'students.apps.StudentsConfig',  # more clean structure
+    'departments.apps.DepartmentsConfig',
 ]
 
 MIDDLEWARE = [
