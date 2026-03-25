@@ -1,13 +1,9 @@
-{% load static %}
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="color-scheme" content="light" />
-    <title>ITI-Open Source | Departments</title>
-
-    <style>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+       <style>
       :root {
         --bg0: #050816;
         --bg1: #0b1433;
@@ -235,7 +231,7 @@
       }
       .hero-grid {
         display: grid;
-        grid-template-columns: 1.1fr 0.9fr;
+        grid-template-columns: 1.15fr 0.85fr;
         gap: 28px;
         align-items: center;
       }
@@ -264,6 +260,7 @@
         flex-wrap: wrap;
         margin-top: 18px;
       }
+
       .hero-chips {
         display: flex;
         gap: 10px;
@@ -360,6 +357,7 @@
       .section {
         padding: 42px 0;
       }
+
       .section-head {
         display: flex;
         align-items: flex-end;
@@ -382,6 +380,11 @@
       .grid-3 {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
+        gap: 14px;
+      }
+      .grid-2 {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
         gap: 14px;
       }
       .feature {
@@ -426,8 +429,6 @@
         margin: 0 0 8px;
         font-size: 1.05rem;
         letter-spacing: -0.01em;
-        position: relative;
-        z-index: 1;
       }
       .feature p {
         margin: 0;
@@ -506,10 +507,29 @@
         line-height: 1.8;
       }
 
-      .grid-2 {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 14px;
+      /* Testimonials */
+      .quote {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .stars {
+        display: flex;
+        gap: 3px;
+      }
+      .star {
+        width: 16px;
+        height: 16px;
+        fill: rgba(249, 115, 22, 0.95);
+      }
+      .quote blockquote {
+        margin: 0;
+        color: var(--text);
+        line-height: 1.7;
+      }
+      .quote .who {
+        color: var(--muted);
+        font-size: 0.95rem;
       }
 
       /* FAQ */
@@ -547,6 +567,63 @@
         line-height: 1.7;
       }
 
+      /* Pricing */
+      .price-card {
+        border-radius: var(--radius-xl);
+        border: 1px solid rgba(255, 255, 255, 0.16);
+        background: rgba(255, 255, 255, 0.06);
+        backdrop-filter: blur(12px);
+        padding: 18px 16px;
+        position: relative;
+        overflow: hidden;
+      }
+      .price-card.featured {
+        border-color: rgba(139, 92, 246, 0.65);
+        background: linear-gradient(180deg, rgba(139, 92, 246, 0.22), rgba(255, 255, 255, 0.05));
+      }
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 8px 10px;
+        border-radius: 999px;
+        border: 1px solid rgba(124, 58, 237, 0.45);
+        background: rgba(124, 58, 237, 0.18);
+        font-weight: 900;
+        font-size: 0.9rem;
+      }
+      .price {
+        display: flex;
+        align-items: baseline;
+        gap: 10px;
+        margin: 12px 0 8px;
+      }
+      .price b {
+        font-size: 2rem;
+        letter-spacing: -0.03em;
+      }
+      .price span {
+        color: var(--muted);
+      }
+      .price-list {
+        margin: 14px 0 0;
+        padding: 0;
+        list-style: none;
+        color: var(--muted);
+        line-height: 1.85;
+      }
+      .price-list li {
+        display: flex;
+        gap: 10px;
+        align-items: flex-start;
+      }
+      .check {
+        width: 18px;
+        height: 18px;
+        margin-top: 2px;
+        flex: 0 0 18px;
+      }
+
       /* CTA */
       .cta {
         border-top: 1px solid rgba(255, 255, 255, 0.08);
@@ -576,7 +653,6 @@
         color: var(--muted);
         line-height: 1.7;
       }
-
       form.signup {
         display: grid;
         gap: 10px;
@@ -593,7 +669,6 @@
       .input::placeholder {
         color: rgba(255, 255, 255, 0.55);
       }
-
       .footer {
         padding: 26px 0 40px;
         color: var(--muted);
@@ -622,16 +697,17 @@
         background: rgba(255, 255, 255, 0.06);
       }
 
+      .muted {
+        color: var(--muted);
+      }
+
       .divider {
         height: 1px;
         background: rgba(255, 255, 255, 0.08);
         margin: 18px 0;
       }
 
-      .muted {
-        color: var(--muted);
-      }
-
+      /* Responsive */
       @media (max-width: 980px) {
         .hero-grid {
           grid-template-columns: 1fr;
@@ -645,13 +721,13 @@
         .grid-3 {
           grid-template-columns: 1fr;
         }
+        .grid-2 {
+          grid-template-columns: 1fr;
+        }
         .steps {
           grid-template-columns: 1fr;
         }
         .split {
-          grid-template-columns: 1fr;
-        }
-        .grid-2 {
           grid-template-columns: 1fr;
         }
         .nav-links,
@@ -677,10 +753,9 @@
         }
       }
     </style>
-  </head>
-
-  <body>
-    <a class="skip-link" href="#main">Skip to content</a>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
 
     <div class="nav-wrap">
       <div class="container">
@@ -691,21 +766,17 @@
           </div>
 
           <nav class="nav-links" aria-label="Sections">
-            <a href="#features">Features</a>
+            <a href="{% url 'students.index' %}">Students</a>
             <a href="#about">About</a>
+            <a href="#pricing">Pricing</a>
             <a href="#faq">FAQ</a>
           </nav>
 
           <div class="nav-cta" aria-label="Call to actions">
             <a class="btn secondary" href="#contact">Contact</a>
-            <a class="btn btn-primary" href="#contact">Get Started</a>
-            <button
-              class="hamburger"
-              type="button"
-              id="mobileToggle"
-              aria-expanded="false"
-              aria-controls="mobilePanel"
-            >
+            <a class="btn btn-primary" href="#pricing">Get Started</a>
+
+            <button class="hamburger" type="button" id="mobileToggle" aria-expanded="false" aria-controls="mobilePanel">
               <span aria-hidden="true">Menu</span>
             </button>
           </div>
@@ -714,281 +785,29 @@
         <div class="mobile-panel" id="mobilePanel" hidden>
           <a href="#features" class="mobile-link">Features</a>
           <a href="#about" class="mobile-link">About</a>
+          <a href="#pricing" class="mobile-link">Pricing</a>
           <a href="#faq" class="mobile-link">FAQ</a>
           <a href="#contact" class="mobile-link">Contact</a>
           <div class="divider" aria-hidden="true"></div>
-          <a class="btn btn-primary" href="#contact" style="width: 100%;">Get Started</a>
+          <a class="btn btn-primary" href="#pricing" style="width: 100%;">Get Started</a>
         </div>
       </div>
     </div>
 
-    <main id="main" class="container">
-      <section class="hero" aria-label="Departments hero">
-        <div class="hero-grid">
-          <div>
-            <h1>
-              Manage your <span class="gradient-text">Departments</span> with clarity
-            </h1>
-            <p class="lead">
-              A colorful, organized landing page for your department management system. Designed so
-              visitors can quickly understand the benefits and jump to the right sections.
-            </p>
+    <div style="color: red">
+        {% block content %}
+        {% endblock %}
+    </div>
 
-            <div class="hero-actions" aria-label="Primary actions">
-              <a class="btn btn-primary" href="#features">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                  <path d="M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-                  <path d="M13 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                </svg>
-                Explore Departments
-              </a>
-              <a class="btn" href="#contact">
-                Contact
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                  <path d="M22 2L11 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-                  <path d="M22 2l-7 20-4-9-9-4 20-7Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                </svg>
-              </a>
-            </div>
+    <div style="background-color: beige;">
+        {% block main %}
+        {% endblock %}
+    </div>
 
-            <div class="hero-chips" aria-label="Highlights">
-              <div class="chip"><span class="chip-dot" aria-hidden="true"></span>Role clarity</div>
-              <div class="chip"><span class="chip-dot" aria-hidden="true" style="background:linear-gradient(135deg,var(--p4),var(--p5));"></span>Clean structure</div>
-              <div class="chip"><span class="chip-dot" aria-hidden="true" style="background:linear-gradient(135deg,var(--p2),var(--p3));"></span>Responsive UI</div>
-            </div>
-          </div>
-
-          <aside class="hero-card" aria-label="Preview card">
-            <div class="card-title">Department overview</div>
-            <p class="card-sub">A ready-to-connect UI layout that supports future dynamic data.</p>
-            <div class="stat-grid">
-              <div class="stat">
-                <b>Teams</b>
-                <span>by department</span>
-              </div>
-              <div class="stat">
-                <b>Staff</b>
-                <span>assignments</span>
-              </div>
-              <div class="stat">
-                <b>Policies</b>
-                <span>and workflows</span>
-              </div>
-              <div class="stat">
-                <b>Reports</b>
-                <span>at a glance</span>
-              </div>
-            </div>
-            <div class="divider" aria-hidden="true"></div>
-            <div class="muted" style="line-height:1.7;position:relative;z-index:1;">
-              Tip: Update text + connect sections later using Django context variables.
-            </div>
-          </aside>
-        </div>
-      </section>
-
-      <section class="section" id="features" aria-label="Departments features">
-        <div class="section-head">
-          <h2>Designed for structured department work</h2>
-          <p class="lead-small">
-            This page uses reusable cards and sections that scale on mobile and stay readable on desktop.
-          </p>
-        </div>
-
-        <div class="grid-3">
-          <article class="feature">
-            <div class="icon" aria-hidden="true">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-                <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-              </svg>
-            </div>
-            <h3>Clear department structure</h3>
-            <p>Organize departments, roles, and records with scannable cards and consistent spacing.</p>
-          </article>
-
-          <article class="feature">
-            <div class="icon" aria-hidden="true">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-                <path d="M12 2l3 7h7l-5.5 4 2 7-6.5-4.5L5.5 22l2-7L2 9h7l3-7Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-              </svg>
-            </div>
-            <h3>Staff assignment ready</h3>
-            <p>Prepare the layout for staff-to-department relationships and quick profile navigation.</p>
-          </article>
-
-          <article class="feature">
-            <div class="icon" aria-hidden="true">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-                <path d="M3 12h7l2-8 2 16 2-8h7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </div>
-            <h3>Dashboards at a glance</h3>
-            <p>Show summaries, key counts, and next actions so teams know what matters today.</p>
-          </article>
-
-          <article class="feature">
-            <div class="icon" aria-hidden="true">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-                <path d="M4 19V5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                <path d="M8 21h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-              </svg>
-            </div>
-            <h3>Reusable sections</h3>
-            <p>Swap in your real department descriptions, policies, and FAQs without redesigning everything.</p>
-          </article>
-
-          <article class="feature">
-            <div class="icon" aria-hidden="true">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-                <path d="M3 12l2-2 4 4 8-8 4 4-10 10L3 12Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-              </svg>
-            </div>
-            <h3>Fast & friendly UI</h3>
-            <p>Self-contained CSS creates a modern look without needing external libraries.</p>
-          </article>
-
-          <article class="feature">
-            <div class="icon" aria-hidden="true">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-                <path d="M12 20l9-5-9-5-9 5 9 5Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-                <path d="M12 12V3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-              </svg>
-            </div>
-            <h3>Ready for growth</h3>
-            <p>Built to extend with Django templates and future pages for departments.</p>
-          </article>
-        </div>
-      </section>
-
-      <section class="section" id="about" aria-label="About departments landing">
-        <div class="section-head">
-          <h2>How it works (simple & clear)</h2>
-          <p class="lead-small">Three steps to go from “setup” to “department operations”.</p>
-        </div>
-
-        <div class="steps" role="list" aria-label="How it works steps">
-          <div class="step" role="listitem">
-            <div class="num">
-              <span style="width:10px;height:10px;border-radius:999px;background:linear-gradient(135deg,var(--p1),var(--p3));display:inline-block;"></span>
-              Step 1
-            </div>
-            <h3>Create departments</h3>
-            <p>Define your units, names, and responsibilities with consistent structure.</p>
-          </div>
-
-          <div class="step" role="listitem">
-            <div class="num">
-              <span style="width:10px;height:10px;border-radius:999px;background:linear-gradient(135deg,var(--p2),var(--p3));display:inline-block;"></span>
-              Step 2
-            </div>
-            <h3>Assign staff & roles</h3>
-            <p>Connect employees to departments so teams can access what they need.</p>
-          </div>
-
-          <div class="step" role="listitem">
-            <div class="num">
-              <span style="width:10px;height:10px;border-radius:999px;background:linear-gradient(135deg,var(--p4),var(--p5));display:inline-block;"></span>
-              Step 3
-            </div>
-            <h3>Track outcomes</h3>
-            <p>Use dashboards and reports to keep progress visible across departments.</p>
-          </div>
-        </div>
-
-        <div class="split" style="margin-top: 14px;">
-          <div class="panel">
-            <h3>Made for clarity</h3>
-            <p>Strong contrast and consistent spacing help visitors find key info quickly.</p>
-            <ul>
-              <li>Responsive grids & cards</li>
-              <li>Readable headings and short sections</li>
-              <li>Accessible FAQ accordion</li>
-            </ul>
-          </div>
-          <div class="panel">
-            <h3>Made for Django</h3>
-            <p>Keep the HTML structure and connect real content when your models are ready.</p>
-            <ul>
-              <li>Replace placeholders with Django context variables</li>
-              <li>Keep styles inline or move to static CSS later</li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      <section class="section" id="faq" aria-label="FAQ">
-        <div class="section-head">
-          <h2>FAQ</h2>
-          <p class="lead-small">Quick answers so users feel confident.</p>
-        </div>
-
-        <div class="grid-2">
-          <details class="faq">
-            <summary>
-              Is this responsive?
-              <svg class="chev" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </summary>
-            <p>Yes. Layouts switch between desktop and mobile using CSS grid breakpoints.</p>
-          </details>
-
-          <details class="faq">
-            <summary>
-              Does it require extra CSS?
-              <svg class="chev" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </summary>
-            <p>No. The page is self-contained with inline styles.</p>
-          </details>
-
-          <details class="faq">
-            <summary>
-              Can I connect it to real department data?
-              <svg class="chev" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </summary>
-            <p>Yes. Later you can inject context variables to populate cards, departments, and stats.</p>
-          </details>
-
-          <details class="faq">
-            <summary>
-              Where is it rendered?
-              <svg class="chev" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </summary>
-            <p>Your `departments/views.py` renders `departments/landing.html` directly.</p>
-          </details>
-        </div>
-      </section>
-
-      <section class="cta" id="contact" aria-label="Contact departments call to action">
-        <div class="cta-box">
-          <div>
-            <h2>Start organizing departments today</h2>
-            <p>
-              This is a front-end placeholder CTA. Later, connect the form to Django views and models.
-            </p>
-          </div>
-
-          <form class="signup" onsubmit="return false;" aria-label="Departments contact form">
-            <input class="input" type="email" name="email" placeholder="Your email" autocomplete="email" required />
-            <button class="btn btn-primary" type="submit">
-              Contact us
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M22 2L11 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                <path d="M22 2l-7 20-4-9-9-4 20-7Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </button>
-            <div class="muted" style="font-size:0.92rem;line-height:1.6;">
-              Placeholder form. Hook it to Django when ready.
-            </div>
-          </form>
-        </div>
-      </section>
+    <div>
+        {% block body %}
+        {% endblock %}
+    </div>
 
       <footer class="footer" aria-label="Footer">
         <div class="footer-grid">
@@ -999,6 +818,7 @@
           <div class="footer-links" aria-label="Footer links">
             <a href="#features">Features</a>
             <a href="#about">About</a>
+            <a href="#pricing">Pricing</a>
             <a href="#faq">FAQ</a>
           </div>
           <div class="muted" style="font-size:0.92rem;">
@@ -1006,9 +826,8 @@
           </div>
         </div>
       </footer>
-    </main>
 
-    <script>
+   <script>
       (function () {
         var toggle = document.getElementById("mobileToggle");
         var panel = document.getElementById("mobilePanel");
@@ -1025,6 +844,7 @@
           }
         });
 
+        // Close the mobile panel after clicking a link
         panel.addEventListener("click", function (e) {
           var target = e.target;
           if (target && target.tagName === "A") {
@@ -1037,5 +857,5 @@
         if (year) year.textContent = String(new Date().getFullYear());
       })();
     </script>
-  </body>
+</body>
 </html>

@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+
+{% block body %}
+  <section class="section" aria-label="Students list">
+    <div class="section-head">
+      <h2>Students</h2>
+      <p class="lead-small">Browse student profiles and open details.</p>
+    </div>
+
+    <div class="panel">
+      <style>
+        .students-table-wrap {
+          overflow-x: auto;
+          border-radius: 16px;
+        }
+
+        table.students-table {
+          width: 100%;
+          border-collapse: collapse;
+          min-width: 720px;
+          border: 1px solid rgba(255, 255, 255, 0.14);
+          background: rgba(255, 255, 255, 0.03);
+        }
+
+        .students-table thead th {
+          text-align: left;
+          padding: 12px 14px;
+          font-size: 0.95rem;
+          font-weight: 900;
+          color: rgba(255, 255, 255, 0.92);
+          background: rgba(255, 255, 255, 0.06);
+          border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+          white-space: nowrap;
+        }
+
+        .students-table tbody td {
+          padding: 12px 14px;
+          border-top: 1px solid rgba(255, 255, 255, 0.09);
+          color: var(--muted);
+          white-space: nowrap;
+        }
+
+        .students-table tbody tr:hover td {
+          background: rgba(255, 255, 255, 0.05);
+          color: var(--text);
+        }
+
+        .students-table .row-actions {
+          white-space: nowrap;
+        }
+
+        .students-table .btn {
+          padding: 8px 12px;
+          border-radius: 12px;
+          font-weight: 800;
+          font-size: 0.9rem;
+          background: rgba(255, 255, 255, 0.06);
+        }
+      </style>
+
+      <div class="students-table-wrap" role="region" aria-label="Students table">
+        <table class="students-table">
+          <thead>
+            <tr>
+              <th style="width: 90px;">ID</th>
+              <th>Student Name</th>
+              <th>Track</th>
+              <th style="width: 160px;">Salary</th>
+              <th class="row-actions" style="width: 140px;">Show</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for student in students %}
+              <tr>
+                <td>{{ student.id }}</td>
+                <td>{{ student.name }}</td>
+                <td>{{ student.track }}</td>
+                <td>{{ student.salary }}</td>
+                <td class="row-actions">
+<!--                  <a-->
+<!--                    class="btn"-->
+<!--                    href="/students/{{student.id}}"-->
+<!--                    aria-label="Show student {{ student.name }}"-->
+<!--                   >-->
+                    <a
+                    class="btn"
+                    href="{% url 'students.profile' student.id  %}"
+                    aria-label="Show student {{ student.name }}">
+                    Show
+                  </a>
+                </td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+{% endblock %}

@@ -29,16 +29,16 @@ students = [
     {"id":3, "name":"Abc", "track": "os", "salary": 4000},
 ]
 
-
-def student_profile(request, id):
-    print(id, type(id))
-    student_found = filter(lambda student: student["id"] == int(id), students)
-    student_found = list(student_found)
-    if len(student_found) == 0:
-        return HttpResponse("<h1 style='color:red'> No user found</h1>")
-
-    student = student_found[0]
-    return HttpResponse(f"<h1 style='color:red'> Hi {student['id']} {student['name']}</h1>")
+#
+# def student_profile(request, id):
+#     print(id, type(id))
+#     student_found = filter(lambda student: student["id"] == int(id), students)
+#     student_found = list(student_found)
+#     if len(student_found) == 0:
+#         return HttpResponse("<h1 style='color:red'> No user found</h1>")
+#
+#     student = student_found[0]
+#     return HttpResponse(f"<h1 style='color:red'> Hi {student['id']} {student['name']}</h1>")
 
 
 # return content in html page ??
@@ -49,3 +49,20 @@ def landing(request):
     return render(request, "students/landing.html")
 
 
+def index(request):
+    # send information of all students to the index.html
+    return render(request, "students/index.html",
+                  context={'name': "noha",
+                           "students": students})
+
+
+
+def student_profile(request, id):
+    student_found = filter(lambda student: student["id"] == id, students)
+    student_found = list(student_found)
+    if len(student_found) == 0:
+        return HttpResponse("<h1 style='color:red'> No user found</h1>")
+
+    student = student_found[0]
+    return render(request, "students/profile.html",
+                  context={"student": student})
