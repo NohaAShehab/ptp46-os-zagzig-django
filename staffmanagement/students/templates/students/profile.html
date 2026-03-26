@@ -94,6 +94,12 @@
             <div class="kv-label">Updated at</div>
             <div class="kv-value">{{ student.updated_at }}</div>
           </div>
+        <div class="kv">
+            <div class="kv-label">Department</div>
+            <div class="kv-value">{{ student.department }}</div>
+          <img src="{{student.department.logo_url}}" alt="{{student.department.name}}"
+               width="50" height="50">
+          </div>
       </div>
       <div style="margin-top:24px; display:flex; gap:16px; flex-wrap:wrap;">
         <a class="btn btn-primary" href="{% url 'students.index' %}">Open List</a>

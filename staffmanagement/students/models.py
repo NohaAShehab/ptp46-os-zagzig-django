@@ -1,5 +1,8 @@
 from django.db import models
 from django.shortcuts import reverse
+
+from departments.models import Department
+
 # Create your models here.
 
 
@@ -26,6 +29,9 @@ class Student(models.Model):
     age = models.IntegerField(default=10)
     created_at = models.DateTimeField(auto_now_add=True, null=True)
     updated_at = models.DateTimeField(auto_now=True, null=True)
+    # define relation, you need to add department to the students table ??
+    department=  models.ForeignKey(Department, on_delete=models.CASCADE, null=True, blank=True,
+                                   related_name="students")
 
 
     def __str__(self):
@@ -41,3 +47,7 @@ class Student(models.Model):
     @property
     def show_url(self):
         return reverse("students.profile", args=[self.id])
+
+    @property
+    def delete_url(self):
+        return reverse("students.delete", args=[self.id])

@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse
 
+from departments.models import Department
 from students.models import Student
 # Create your views here.
 
@@ -90,18 +91,21 @@ def student_profile(request, id):
 
 
 def create(request):
+    departments = Department.objects.all()
     if request.method == "POST":
-        print(request.POST)
         name = request.POST.get("name", "").strip()
         email = request.POST.get("email", "").strip()
         age = request.POST.get("age", "").strip()
         grade = request.POST.get("grade", "").strip()
         gender = request.POST.get("gender", "m").strip() or "m"
-        # images .. files request.FILES
-        print(request.FILES)
+
         # If image input is type="file", Django provides it via request.FILES.
         image = request.FILES.get("image")
         # image = image_file.name if image_file else request.POST.get("image", "").strip()
+
+        department = request.POST.get("department")  ## this is the id of the dept ??
+        ## in django department must a model object -->
+        department = Department.objects.filter(pk=department).first()
 
 
         student = Student(
@@ -111,8 +115,16 @@ def create(request):
             grade=int(grade) if grade else 0,
             image=image or None,
             gender=gender if gender in {"m", "f"} else "m",
+            department = department or None
         )
         student.save()
         return redirect(student.show_url)
 
-    return render(request, "students/create.html")
+    return render(request, "students/create.html",
+                  context={"departments": departments})
+
+
+def delete(request, id):
+    student= get_object_or_404(Student, pk=id)
+    student.delete() # delete from students_student where id = id;
+    return redirect('students.index')

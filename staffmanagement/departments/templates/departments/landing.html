@@ -71,77 +71,73 @@
     </div>
   </section>
 
-  <section class="section" id="features" aria-label="Departments features">
+  <section class="section" id="features" aria-label="All departments">
     <div class="section-head">
-      <h2>Designed for structured department work</h2>
-      <p class="lead-small">
-        This page uses reusable cards and sections that scale on mobile and stay readable on desktop.
-      </p>
+      <div>
+        <h2>All Departments</h2>
+        <p class="lead-small">
+          Browse every department in one place.
+        </p>
+      </div>
     </div>
 
-    <div class="grid-3">
-      <article class="feature">
-        <div class="icon" aria-hidden="true">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-            <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-          </svg>
-        </div>
-        <h3>Clear department structure</h3>
-        <p>Organize departments, roles, and records with scannable cards and consistent spacing.</p>
-      </article>
+    {% if departments %}
+      <div class="grid-3">
+        {% for department in departments %}
+          <article class="panel" style="padding: var(--space-4) var(--space-3);">
+            <div style="display:flex; align-items:flex-start; gap: var(--space-3);">
+              <div
+                style="
+                  width: 56px;
+                  height: 56px;
+                  border-radius: 18px;
+                  border: 1px solid var(--border);
+                  background: linear-gradient(135deg, rgba(37, 99, 235, 0.14), rgba(245, 158, 11, 0.12));
+                  display:flex;
+                  align-items:center;
+                  justify-content:center;
+                  overflow:hidden;
+                  flex: 0 0 auto;
+                "
+                aria-hidden="true"
+              >
+                {% if department.logo %}
+                  <img
+                    src="{{ department.logo_url }}"
+                    alt=""
+                    style="width:100%; height:100%; object-fit:cover; display:block;"
+                  />
+                {% else %}
+                  <span style="font-weight: 900; color: var(--accent); font-size: 1.05rem;">
+                    {{ department.name|first|upper }}
+                  </span>
+                {% endif %}
+              </div>
 
-      <article class="feature">
-        <div class="icon" aria-hidden="true">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-            <path d="M12 2l3 7h7l-5.5 4 2 7-6.5-4.5L5.5 22l2-7L2 9h7l3-7Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
-          </svg>
-        </div>
-        <h3>Staff assignment ready</h3>
-        <p>Prepare the layout for staff-to-department relationships and quick profile navigation.</p>
-      </article>
-
-      <article class="feature">
-        <div class="icon" aria-hidden="true">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-            <path d="M3 12h7l2-8 2 16 2-8h7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-          </svg>
-        </div>
-        <h3>Dashboards at a glance</h3>
-        <p>Show summaries, key counts, and next actions so teams know what matters today.</p>
-      </article>
-
-      <article class="feature">
-        <div class="icon" aria-hidden="true">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-            <path d="M4 19V5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v14" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-            <path d="M8 21h8" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-          </svg>
-        </div>
-        <h3>Reusable sections</h3>
-        <p>Swap in your real department descriptions, policies, and FAQs without redesigning everything.</p>
-      </article>
-
-      <article class="feature">
-        <div class="icon" aria-hidden="true">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-            <path d="M3 12l2-2 4 4 8-8 4 4-10 10L3 12Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
-          </svg>
-        </div>
-        <h3>Fast & friendly UI</h3>
-        <p>Self-contained CSS creates a modern look without needing external libraries.</p>
-      </article>
-
-      <article class="feature">
-        <div class="icon" aria-hidden="true">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-            <path d="M12 20l9-5-9-5-9 5 9 5Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
-            <path d="M12 12V3" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-          </svg>
-        </div>
-        <h3>Ready for growth</h3>
-        <p>Built to extend with Django templates and future pages for departments.</p>
-      </article>
-    </div>
+              <div>
+                <h3 style="margin: 0 0 8px;">{{ department.name }}</h3>
+                <p class="lead-small" style="max-width: 44ch;">
+                  {% if department.about %}
+                    {{ department.about|truncatewords:22 }}
+                  {% else %}
+                    No description yet.
+                  {% endif %}
+                </p>
+                <a class="btn" href="{% url 'departments.show' department.id %}" style="margin-top: 10px;">
+                  Show
+                </a>
+              </div>
+            </div>
+          </article>
+        {% endfor %}
+      </div>
+    {% else %}
+      <div class="panel" style="padding: var(--space-4) var(--space-3);">
+        <p class="lead-small" style="margin:0;">
+          No departments found.
+        </p>
+      </div>
+    {% endif %}
   </section>
 
   <section class="section" id="about" aria-label="About departments landing">

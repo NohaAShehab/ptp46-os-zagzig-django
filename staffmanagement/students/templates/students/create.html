@@ -66,6 +66,17 @@
             </select>
           </div>
           <div>
+            <label class="kv-label" for="department">Department</label>
+            <select class="input" id="department" name="department">
+              <option value="" disabled>Select department</option>
+              {% for department in departments %}
+                <option value="{{ department.id }}">{{ department.name }}</option>
+              {% empty %}
+                <option value="" disabled>No departments available</option>
+              {% endfor %}
+            </select>
+          </div>
+          <div>
             <label class="kv-label" for="image">Image filename</label>
             <input class="input file-input" id="image" name="image" type="file" accept="image/*" />
           </div>

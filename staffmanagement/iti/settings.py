@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     # use models, migrations, ----
     'students.apps.StudentsConfig',  # more clean structure
     'departments.apps.DepartmentsConfig',
+    'django_cleanup.apps.CleanupConfig',
 ]
 
 MIDDLEWARE = [
