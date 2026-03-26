@@ -18,7 +18,9 @@ class Student(models.Model):
     name = models.CharField(max_length=100)
     email = models.EmailField(max_length=200, null=True, unique=True )  # validate email , backend
     grade = models.IntegerField(default=0)
-    image=  models.CharField(max_length=200, null=True)
+    # image=  models.CharField(max_length=200, null=True)
+    # django provide way of uploading the images ??
+    image = models.ImageField(upload_to="students/images", null=True, blank=True)
     gender = models.CharField(choices=[('m','Male'), ('f','Female')],
                               max_length=1, default='m')
     age = models.IntegerField(default=10)
@@ -32,7 +34,8 @@ class Student(models.Model):
 
     @property
     def image_url(self):
-        return f'students/images/{self.image}'
+        # return f'students/images/{self.image}'
+        return f'/media/{self.image}'
 
 
     @property

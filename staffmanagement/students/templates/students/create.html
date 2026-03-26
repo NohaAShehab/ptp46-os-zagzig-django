@@ -2,6 +2,27 @@
 
 {% block body %}
   <section class="section" aria-label="Create student">
+    <style>
+      /* Make the browser file chooser match the rest of the inputs */
+      .file-input {
+        padding: 10px 12px !important;
+      }
+
+      .file-input::file-selector-button {
+        margin-right: 12px;
+        padding: 10px 12px;
+        border-radius: calc(var(--radius) - 6px);
+        border: 1px solid var(--border);
+        background: linear-gradient(
+          135deg,
+          rgba(37, 99, 235, 0.22),
+          rgba(37, 99, 235, 0.08)
+        );
+        font-weight: 800;
+        color: var(--text);
+      }
+    </style>
+
     <div class="section-head">
       <div>
         <h2>Create Student</h2>
@@ -18,7 +39,7 @@
         </div>
       {% endif %}
 
-      <form method="post" action="" aria-label="Create student form">
+      <form method="post" action="" aria-label="Create student form" enctype="multipart/form-data">
         {% csrf_token %}
         <div class="profile-grid">
           <div>
@@ -46,7 +67,7 @@
           </div>
           <div>
             <label class="kv-label" for="image">Image filename</label>
-            <input class="input" id="image" name="image" type="text" placeholder="pic1.jpg" />
+            <input class="input file-input" id="image" name="image" type="file" accept="image/*" />
           </div>
         </div>
 

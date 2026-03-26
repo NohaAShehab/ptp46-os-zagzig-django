@@ -51,7 +51,7 @@
           {% if student.image %}
             <img
               class="avatar-img"
-              src="{% static student.image_url %}"
+              src="{{ student.image_url }}"
               alt="{{ student.name }} photo"
               loading="lazy"
             />

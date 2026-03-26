@@ -90,21 +90,29 @@ def student_profile(request, id):
 
 
 def create(request):
-    print(request.method)
     if request.method == "POST":
         print(request.POST)
-        # create new student, ??
-        name= request.POST.get("name")
-        email= request.POST.get("email")
-        age= request.POST.get("age")
-        grade= request.POST.get("grade")
-        image = request.POST.get("image")
-        gender= request.POST.get("gender")
-        student =Student(name=name,
-                         email=email,grade=grade,image=image,gender=gender)
-        student.save()
-        # return redirect("students.index")
-        return redirect(student.show_url)
+        name = request.POST.get("name", "").strip()
+        email = request.POST.get("email", "").strip()
+        age = request.POST.get("age", "").strip()
+        grade = request.POST.get("grade", "").strip()
+        gender = request.POST.get("gender", "m").strip() or "m"
+        # images .. files request.FILES
+        print(request.FILES)
+        # If image input is type="file", Django provides it via request.FILES.
+        image = request.FILES.get("image")
+        # image = image_file.name if image_file else request.POST.get("image", "").strip()
 
+
+        student = Student(
+            name=name,
+            email=email,
+            age=int(age) if age else 10,
+            grade=int(grade) if grade else 0,
+            image=image or None,
+            gender=gender if gender in {"m", "f"} else "m",
+        )
+        student.save()
+        return redirect(student.show_url)
 
     return render(request, "students/create.html")
