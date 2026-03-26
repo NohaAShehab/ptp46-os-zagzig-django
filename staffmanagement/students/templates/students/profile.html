@@ -2,6 +2,41 @@
 {% load static %}
 {% block body %}
   <section class="section" aria-label="Student profile">
+    <style>
+      .profile-media {
+        margin-top: 18px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 14px;
+        flex-wrap: wrap;
+      }
+
+      .avatar-frame {
+        width: 200px;
+        height: 200px;
+        border-radius: 999px;
+        border: 1px solid var(--border);
+        background: linear-gradient(135deg, rgba(37, 99, 235, 0.14), rgba(245, 158, 11, 0.14));
+        display: grid;
+        place-items: center;
+        overflow: hidden;
+      }
+
+      .avatar-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      .avatar-fallback {
+        font-size: 2.25rem;
+        font-weight: 800;
+        color: var(--text);
+      }
+    </style>
+
     <div class="section-head">
       <div>
         <h2>Student Profile</h2>
@@ -11,6 +46,21 @@
     </div>
 
     <div class="panel reveal">
+      <div class="profile-media" aria-label="Student photo">
+        <div class="avatar-frame">
+          {% if student.image %}
+            <img
+              class="avatar-img"
+              src="{% static student.image_url %}"
+              alt="{{ student.name }} photo"
+              loading="lazy"
+            />
+          {% else %}
+            <span class="avatar-fallback">{{ student.name|first|upper }}</span>
+          {% endif %}
+        </div>
+      </div>
+
       <div class="profile-grid">
         <div class="kv">
           <div class="kv-label">ID</div>
@@ -45,14 +95,6 @@
             <div class="kv-value">{{ student.updated_at }}</div>
           </div>
       </div>
-<!--      <img src = "{% static 'students/images/pic1.jpg' %}">-->
-      {{student.image}}
-<!--            <img src = "{% static 'students/images/'|add:student.image %}"-->
-<!--            width = "200" height = "200">-->
-      <img src = "{% static student.image_url %}"
-            width = "200" height = "200">
-
-
       <div style="margin-top:24px; display:flex; gap:16px; flex-wrap:wrap;">
         <a class="btn btn-primary" href="{% url 'students.index' %}">Open List</a>
         <a class="btn" href="{% url 'departments.landing' %}">Departments</a>

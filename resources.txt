@@ -1,0 +1,91 @@
+1- install django
+https://docs.djangoproject.com/en/6.0/intro/install/
+
+pip install django
+
+2- create our first project
+https://docs.djangoproject.com/en/6.0/intro/tutorial01/
+
+django-admin startproject iti staffmanagement
+
+
+3- start the server
+python manage.py runserver
+
+4- start your first app ?
+python manage.py startapp students
+
+
+5- you templates
+https://docs.djangoproject.com/en/6.0/topics/templates/
+
+
+
+6- django models
+https://docs.djangoproject.com/en/6.0/topics/db/models/#fields
+
+
+7- use admin dashboard
+
+    create superuser ?
+    python manage.py createsuperuser
+
+
+    after you create any model, you can add it to the admin dashboard?
+
+
+8- apply DML
+DB Access API
+https://docs.djangoproject.com/en/6.0/topics/db/queries/#retrieving-objects
+
+
+select * from students_student;
+
+from students.models import Student ?
+students = Student.objects.all()
+
+
+
+####3 select * from students_student where id ==> given id ?
+
+student = Student.objects.get(id=1); ---> get returned result is one object
+
+student = Student.objects.filter(name='ahmed') --> return list of objects
+
+
+
+
+----------------------------------------
+serving static files
+
+--
+
+------
+add student ??
+--> how to add new object using orm ??
+
+s = Student(name='ahmed', grade=100, image='pic2.png')
+s.save()
+
+use django shell ?
+pip install ipython
+pip install shell
+
+=========================================================
+--> client interface --> used to add the object
+send data from client to server ??
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

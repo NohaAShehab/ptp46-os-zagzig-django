@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.shortcuts import reverse
 # Create your models here.
 
 
@@ -33,3 +33,8 @@ class Student(models.Model):
     @property
     def image_url(self):
         return f'students/images/{self.image}'
+
+
+    @property
+    def show_url(self):
+        return reverse("students.profile", args=[self.id])

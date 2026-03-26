@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse
 
 from students.models import Student
@@ -80,6 +80,31 @@ def index(request):
 
 
 def student_profile(request, id):
-    student= Student.objects.get(id=id)
+    # student= Student.objects.get(id=id)
+    # student = Student.objects.filter(id=id).first()
+    # if not student:
+    #     return HttpResponse("Student not found")
+    student= get_object_or_404(Student, pk=id)
     return render(request, "students/profile.html",
                   context={"student": student})
+
+
+def create(request):
+    print(request.method)
+    if request.method == "POST":
+        print(request.POST)
+        # create new student, ??
+        name= request.POST.get("name")
+        email= request.POST.get("email")
+        age= request.POST.get("age")
+        grade= request.POST.get("grade")
+        image = request.POST.get("image")
+        gender= request.POST.get("gender")
+        student =Student(name=name,
+                         email=email,grade=grade,image=image,gender=gender)
+        student.save()
+        # return redirect("students.index")
+        return redirect(student.show_url)
+
+
+    return render(request, "students/create.html")

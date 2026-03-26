@@ -3,8 +3,11 @@
 {% block body %}
   <section class="section" aria-label="Students list">
     <div class="section-head">
-      <h2>Students</h2>
-      <p class="lead-small">Browse student profiles and open details.</p>
+      <div>
+        <h2>Students</h2>
+        <p class="lead-small">Browse student profiles and open details.</p>
+      </div>
+      <a class="btn btn-primary" href="{% url 'students.create' %}">Create Student</a>
     </div>
 
     <div class="panel">
@@ -26,10 +29,11 @@
                 <td>{{ student.name }}</td>
                 <td>{{ student.email }}</td>
                 <td>{{ student.age }}</td>
+<!--                <td> {{student.show_url }}</td>-->
                 <td class="row-actions">
                   <a
                     class="btn"
-                    href="{% url 'students.profile' student.id %}"
+                    href="{{student.show_url}}"
                     aria-label="Open student profile {{ student.name }}"
                   >
                     Show

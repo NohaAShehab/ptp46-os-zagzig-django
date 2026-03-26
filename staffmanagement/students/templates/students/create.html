@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block body %}
+  <section class="section" aria-label="Create student">
+    <div class="section-head">
+      <div>
+        <h2>Create Student</h2>
+        <p class="lead-small">Add a new student profile to the list.</p>
+      </div>
+      <a class="btn" href="{% url 'students.index' %}">Back to Students</a>
+    </div>
+
+    <div class="panel reveal" style="padding: 20px;">
+      {% if error %}
+        <div class="kv" style="margin-bottom: 16px;">
+          <div class="kv-label">Validation</div>
+          <div class="kv-value">{{ error }}</div>
+        </div>
+      {% endif %}
+
+      <form method="post" action="" aria-label="Create student form">
+        {% csrf_token %}
+        <div class="profile-grid">
+          <div>
+            <label class="kv-label" for="name">Name</label>
+            <input class="input" id="name" name="name" type="text" placeholder="Student name" required />
+          </div>
+          <div>
+            <label class="kv-label" for="email">Email</label>
+            <input class="input" id="email" name="email" type="email" placeholder="student@example.com" required />
+          </div>
+          <div>
+            <label class="kv-label" for="age">Age</label>
+            <input class="input" id="age" name="age" type="number" min="1" placeholder="18" />
+          </div>
+          <div>
+            <label class="kv-label" for="grade">Grade</label>
+            <input class="input" id="grade" name="grade" type="number" min="0" placeholder="0" />
+          </div>
+          <div>
+            <label class="kv-label" for="gender">Gender</label>
+            <select class="input" id="gender" name="gender">
+              <option value="m">Male</option>
+              <option value="f">Female</option>
+            </select>
+          </div>
+          <div>
+            <label class="kv-label" for="image">Image filename</label>
+            <input class="input" id="image" name="image" type="text" placeholder="pic1.jpg" />
+          </div>
+        </div>
+
+        <div style="margin-top: 24px; display: flex; gap: 12px; flex-wrap: wrap;">
+          <button class="btn btn-primary" type="submit">Create Student</button>
+          <a class="btn" href="{% url 'students.index' %}">Cancel</a>
+        </div>
+      </form>
+    </div>
+  </section>
+{% endblock %}
