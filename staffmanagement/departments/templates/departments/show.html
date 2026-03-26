@@ -1,6 +1,48 @@
 {% extends "base.html" %}
 
 {% block content %}
+  <style>
+    .dept-hero {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      flex-wrap: wrap;
+    }
+
+    .dept-logo {
+      width: 96px;
+      height: 96px;
+      border-radius: 24px;
+      border: 1px solid var(--border);
+      background: linear-gradient(135deg, rgba(37, 99, 235, 0.18), rgba(245, 158, 11, 0.16));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      flex: 0 0 auto;
+    }
+
+    .dept-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .dept-logo-fallback {
+      font-weight: 900;
+      color: var(--accent);
+      font-size: 1.6rem;
+    }
+
+    .dept-actions {
+      margin-top: var(--space-4);
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+  </style>
+
   <section class="section" aria-label="Department details">
     <div class="section-head">
       <div>
@@ -11,37 +53,19 @@
     </div>
 
     <div class="panel reveal" style="padding: var(--space-4) var(--space-3);">
-      <div style="display:flex; align-items:center; gap: var(--space-3); flex-wrap: wrap;">
-        <div
-          style="
-            width: 96px;
-            height: 96px;
-            border-radius: 24px;
-            border: 1px solid var(--border);
-            background: linear-gradient(135deg, rgba(37, 99, 235, 0.18), rgba(245, 158, 11, 0.16));
-            display:flex;
-            align-items:center;
-            justify-content:center;
-            overflow:hidden;
-            flex: 0 0 auto;
-          "
-          aria-hidden="true"
-        >
+      <div class="dept-hero">
+        <div class="dept-logo" aria-hidden="true">
           {% if department.logo %}
-            <img
-              src="{{ department.logo_url }}"
-              alt="{{ department.name }} logo"
-              style="width:100%; height:100%; object-fit:cover; display:block;"
-            />
+            <img src="{{ department.logo_url }}" alt="{{ department.name }} logo" />
           {% else %}
-            <span style="font-weight: 900; color: var(--accent); font-size: 1.6rem;">
+            <span class="dept-logo-fallback">
               {{ department.name|first|upper }}
             </span>
           {% endif %}
         </div>
 
         <div>
-          <h3 style="margin: 0 0 8px;">{{ department.name }}</h3>
+          <h3 style="margin: 0 0 var(--space-1);">{{ department.name }}</h3>
           <p class="lead-small" style="margin: 0;">
             {% if department.about %}
               {{ department.about }}
@@ -67,19 +91,47 @@
         </div>
       </div>
 
-      <div style="margin-top: var(--space-4); display:flex; gap: 12px; flex-wrap: wrap;">
+      <div class="dept-actions">
         <a class="btn btn-primary" href="{% url 'departments.landing' %}">All Departments</a>
         <a class="btn" href="{% url 'students.index' %}">Students</a>
       </div>
     </div>
   </section>
 
-<h1> Students in this department </h1>
-select * from students where department_id = {{ department.id }};
-{{department.students.all}}
+  <section class="section" aria-label="Students in this department">
+    <div class="section-head">
+      <h2>Students in this Department</h2>
+      <p class="lead-small">Current students connected to {{ department.name }}.</p>
+    </div>
 
-  {% for std  in department.students.all %}
-    <li> {{std}}</li>
-  {% endfor %}
+    <div class="panel" style="padding: var(--space-3);">
+      {% if department.students.all %}
+        <div class="table-wrap" role="region" aria-label="Department students list">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th style="width: 80px;">ID</th>
+                <th>Name</th>
+                <th style="width: 140px;">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for std in department.students.all %}
+                <tr>
+                  <td>{{ std.id }}</td>
+                  <td>{{ std.name }}</td>
+                  <td>
+                    <a class="btn" href="{% url 'students.profile' std.id %}">Show</a>
+                  </td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      {% else %}
+        <p class="lead-small" style="margin: 0;">No students assigned to this department yet.</p>
+      {% endif %}
+    </div>
+  </section>
 {% endblock %}
 

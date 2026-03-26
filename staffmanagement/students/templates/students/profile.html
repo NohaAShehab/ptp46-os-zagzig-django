@@ -35,6 +35,42 @@
         font-weight: 800;
         color: var(--text);
       }
+
+      .dept-inline {
+        margin-top: 8px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .dept-logo-link {
+        display: inline-flex;
+      }
+
+      .dept-logo {
+        width: 44px;
+        height: 44px;
+        border-radius: 12px;
+        border: 1px solid var(--border);
+        background: linear-gradient(135deg, rgba(37, 99, 235, 0.14), rgba(245, 158, 11, 0.12));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+      }
+
+      .dept-logo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      .dept-fallback {
+        font-size: 0.95rem;
+        font-weight: 900;
+        color: var(--accent);
+      }
     </style>
 
     <div class="section-head">
@@ -96,9 +132,26 @@
           </div>
         <div class="kv">
             <div class="kv-label">Department</div>
-            <div class="kv-value">{{ student.department }}</div>
-          <img src="{{student.department.logo_url}}" alt="{{student.department.name}}"
-               width="50" height="50">
+            {% if student.department %}
+              <div class="dept-inline">
+                <a
+                  class="dept-logo-link"
+                  href="{% url 'departments.show' student.department.id %}"
+                  aria-label="Open {{ student.department.name }} department page"
+                >
+                  <div class="dept-logo" aria-hidden="true">
+                    {% if student.department.logo %}
+                      <img src="{{ student.department.logo_url }}" alt="{{ student.department.name }} logo" />
+                    {% else %}
+                      <span class="dept-fallback">{{ student.department.name|first|upper }}</span>
+                    {% endif %}
+                  </div>
+                </a>
+                <div class="kv-value">{{ student.department.name }}</div>
+              </div>
+            {% else %}
+              <div class="kv-value">No department assigned</div>
+            {% endif %}
           </div>
       </div>
       <div style="margin-top:24px; display:flex; gap:16px; flex-wrap:wrap;">
