@@ -29,3 +29,7 @@ class Student(models.Model):
     def __str__(self):
         # represent how object will be printed , return with string ?
         return f'{self.name}'
+
+    @property
+    def image_url(self):
+        return f'students/images/{self.image}'

@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 
+from students.models import Student
 # Create your views here.
 
 # create my first view handle http request
@@ -48,21 +49,37 @@ def landing(request):
     # return ...  return with page --> landing.html ??
     return render(request, "students/landing.html")
 
+#
+# def index(request):
+#     # send information of all students to the index.html
+#     return render(request, "students/index.html",
+#                   context={'name': "noha",
+#                            "students": students})
+
+
+
+# def student_profile(request, id):
+#     student_found = filter(lambda student: student["id"] == id, students)
+#     student_found = list(student_found)
+#     if len(student_found) == 0:
+#         return HttpResponse("<h1 style='color:red'> No user found</h1>")
+#
+#     student = student_found[0]
+#     return render(request, "students/profile.html",
+#                   context={"student": student})
+
+
+
 
 def index(request):
+    students = Student.objects.all()
     # send information of all students to the index.html
     return render(request, "students/index.html",
                   context={'name': "noha",
                            "students": students})
 
 
-
 def student_profile(request, id):
-    student_found = filter(lambda student: student["id"] == id, students)
-    student_found = list(student_found)
-    if len(student_found) == 0:
-        return HttpResponse("<h1 style='color:red'> No user found</h1>")
-
-    student = student_found[0]
+    student= Student.objects.get(id=id)
     return render(request, "students/profile.html",
                   context={"student": student})
