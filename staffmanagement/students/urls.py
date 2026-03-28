@@ -2,7 +2,7 @@
 from django.urls import path
 from students.views import  (
     home, hi, profile,student_profile, landing, index, create ,
-    delete, create_via_form)
+    delete, create_via_form, CreateStudent, UpdateStudent)
 # you define name for each url , you can use this name, in views, models, in template pages ..
 urlpatterns = [
     path('home', home, name='home'),
@@ -15,4 +15,6 @@ urlpatterns = [
     path('create', create, name='students.create'),
     path('delete/<int:id>', delete, name='students.delete'),
     path('create_via_form', create_via_form, name='students.create_via_form'),
+    path('generic', CreateStudent.as_view(), name='students.generic.create'),
+    path('update/<int:pk>', UpdateStudent.as_view(), name='students.update'),
 ]

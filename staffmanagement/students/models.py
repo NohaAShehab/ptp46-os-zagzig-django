@@ -51,3 +51,7 @@ class Student(models.Model):
     @property
     def delete_url(self):
         return reverse("students.delete", args=[self.id])
+
+    @property
+    def update_url(self):
+        return reverse("students.update", args=[self.id])

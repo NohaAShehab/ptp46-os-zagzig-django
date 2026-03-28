@@ -59,8 +59,11 @@ class StudentModelForm(forms.ModelForm):
     def clean_email(self):
         # check if email exists --> display
         email = self.cleaned_data['email']
-        found = Student.objects.filter(email=email).exists()
-        if found:
+        found = Student.objects.filter(email=email)
+        if self.instance.pk :
+            # if this form used with update action
+            found = found.exclude(pk=self.instance.pk)
+        if found.exists():
             raise forms.ValidationError("Student with this email already exists")
         return email
 

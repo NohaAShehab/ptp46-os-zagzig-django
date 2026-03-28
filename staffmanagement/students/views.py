@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse
+from django.views.generic import CreateView, UpdateView, DeleteView, ListView
 
 from departments.models import Department
 from students.models import Student
@@ -184,3 +185,33 @@ def create_via_form(request):
             return redirect(student.show_url)
 
     return render(request, "students/create_via_form.html", {"form": form})
+
+######################################################################
+## use generic views, edit  ??
+
+
+
+class CreateStudent(CreateView):
+    model = Student
+    form_class = StudentModelForm
+    template_name = "students/create_via_form.html"
+    # success_url = self.object.show_url
+
+    def get_success_url(self):
+        return self.object.show_url
+
+
+
+
+class UpdateStudent(UpdateView):
+    model = Student
+    form_class = StudentModelForm
+    template_name = "students/update.html"
+    def get_success_url(self):
+        return self.object.show_url
+
+
+
+
+
+
