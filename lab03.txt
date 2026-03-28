@@ -1,0 +1,4 @@
+
+
+1- create APIs for products and category  without viewsets
+you can use modelSerializers
