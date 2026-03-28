@@ -1,0 +1,175 @@
+{% extends 'base.html' %}
+
+{% block body %}
+  <section class="section" aria-label="Create student via form">
+    <style>
+      .create-via-form-wrap {
+        max-width: 720px;
+        margin: 0 auto;
+      }
+
+      .create-via-form-wrap form {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-3);
+        align-items: stretch;
+      }
+
+      /* Django default: {{ form }} renders as_table() → <table> */
+      .create-via-form-wrap form > table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0;
+      }
+
+      .create-via-form-wrap form > table th {
+        text-align: left;
+        vertical-align: top;
+        padding: var(--space-2) var(--space-3) var(--space-2) 0;
+        font-weight: 800;
+        font-size: 0.9rem;
+        color: var(--muted);
+        width: 34%;
+        max-width: 200px;
+      }
+
+      .create-via-form-wrap form > table td {
+        padding: var(--space-2) 0;
+        vertical-align: top;
+      }
+
+      .create-via-form-wrap form > table tr + tr th,
+      .create-via-form-wrap form > table tr + tr td {
+        border-top: 1px solid rgba(15, 23, 42, 0.08);
+      }
+
+      /* If form is rendered as_p / as_div */
+      .create-via-form-wrap form > p,
+      .create-via-form-wrap form > div:not(.create-via-form-actions) {
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-1);
+        min-width: 0;
+      }
+
+      .create-via-form-wrap form label {
+        font-weight: 800;
+        font-size: 0.9rem;
+        color: var(--muted);
+      }
+
+      .create-via-form-wrap form input[type="text"],
+      .create-via-form-wrap form input[type="email"],
+      .create-via-form-wrap form input[type="number"],
+      .create-via-form-wrap form input[type="url"],
+      .create-via-form-wrap form input[type="date"],
+      .create-via-form-wrap form input[type="datetime-local"],
+      .create-via-form-wrap form select,
+      .create-via-form-wrap form textarea {
+        width: 100%;
+        padding: var(--space-2) var(--space-3);
+        border-radius: var(--radius);
+        border: 1px solid var(--border);
+        background: rgba(255, 255, 255, 0.92);
+        color: var(--text);
+        font: inherit;
+        transition: box-shadow 160ms ease, border-color 160ms ease, background 160ms ease;
+      }
+
+      .create-via-form-wrap form textarea {
+        min-height: 120px;
+        resize: vertical;
+      }
+
+      .create-via-form-wrap form input:focus-visible,
+      .create-via-form-wrap form select:focus-visible,
+      .create-via-form-wrap form textarea:focus-visible {
+        outline: 0;
+        box-shadow: 0 0 0 4px var(--ring) !important;
+        border-color: rgba(37, 99, 235, 0.7);
+        background: var(--surface);
+      }
+
+      .create-via-form-wrap form input[type="file"] {
+        padding: 10px 12px !important;
+        border-radius: var(--radius);
+        border: 1px solid var(--border);
+        background: rgba(255, 255, 255, 0.92);
+        width: 100%;
+      }
+
+      .create-via-form-wrap form input[type="file"]::file-selector-button {
+        margin-right: 12px;
+        padding: 10px 12px;
+        border-radius: calc(var(--radius) - 6px);
+        border: 1px solid var(--border);
+        background: linear-gradient(
+          135deg,
+          rgba(37, 99, 235, 0.22),
+          rgba(37, 99, 235, 0.08)
+        );
+        font-weight: 800;
+        color: var(--text);
+        cursor: pointer;
+      }
+
+      .create-via-form-wrap form ul.errorlist {
+        list-style: none;
+        margin: 0;
+        padding: var(--space-2) var(--space-3);
+        border-radius: var(--radius);
+        border: 1px solid rgba(220, 38, 38, 0.35);
+        background: rgba(254, 226, 226, 0.45);
+        color: #991b1b;
+        font-size: 0.92rem;
+        font-weight: 700;
+      }
+
+      .create-via-form-actions {
+        margin-top: var(--space-1);
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+        align-items: center;
+      }
+
+      @media (max-width: 640px) {
+        .create-via-form-wrap form > table th,
+        .create-via-form-wrap form > table td {
+          display: block;
+          width: 100%;
+          max-width: none;
+          padding-left: 0;
+          padding-right: 0;
+        }
+
+        .create-via-form-wrap form > table tr + tr th {
+          border-top: none;
+          padding-top: var(--space-3);
+        }
+      }
+    </style>
+
+    <div class="section-head">
+      <div>
+        <h2>Create Student</h2>
+        <p class="lead-small">Add a new student using the form below.</p>
+      </div>
+      <a class="btn" href="{% url 'students.index' %}">Back to Students</a>
+    </div>
+
+    <div class="create-via-form-wrap">
+      <div class="panel reveal" style="padding: var(--space-4) var(--space-3);">
+        <form method="post" action="" aria-label="Create student form" enctype="multipart/form-data">
+          {% csrf_token %}
+          {{form}}
+          <div class="create-via-form-actions">
+            <button class="btn btn-primary" type="submit">Create Student</button>
+            <a class="btn" href="{% url 'students.index' %}">Cancel</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+{% endblock %}

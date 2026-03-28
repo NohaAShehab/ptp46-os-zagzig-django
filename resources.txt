@@ -77,6 +77,18 @@ send data from client to server ??
 
 
 
+============
+Django forms
+    create form with required fields, validate the inputs
+        ->> define validation rules
+        https://docs.djangoproject.com/en/6.0/topics/forms/
+class based views
+
+===
+introduction to DRF --> Django rest framework
+
+
+
 
 
 

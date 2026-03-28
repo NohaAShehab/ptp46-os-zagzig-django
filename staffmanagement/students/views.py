@@ -3,6 +3,8 @@ from django.http import HttpResponse
 
 from departments.models import Department
 from students.models import Student
+from students.forms import StudentForm
+
 # Create your views here.
 
 # create my first view handle http request
@@ -93,8 +95,8 @@ def student_profile(request, id):
 def create(request):
     departments = Department.objects.all()
     if request.method == "POST":
-        name = request.POST.get("name", "").strip()
-        email = request.POST.get("email", "").strip()
+        name = request.POST.get("name", "")
+        email = request.POST.get("email", "")
         age = request.POST.get("age", "").strip()
         grade = request.POST.get("grade", "").strip()
         gender = request.POST.get("gender", "m").strip() or "m"
@@ -106,7 +108,13 @@ def create(request):
         department = request.POST.get("department")  ## this is the id of the dept ??
         ## in django department must a model object -->
         department = Department.objects.filter(pk=department).first()
-
+        # errors = {}
+        # if len(name) <2  or  image==None or int(age) > 100:
+        #     errors["name"]="name must be > 2  characters"
+        #     errors["age"]="age must be < 100 characters"
+        #     errors ["image"] = "Image is required"
+        # if errors:
+        #     return render(request, "students/create.html", context={"errors": errors})
 
         student = Student(
             name=name,
@@ -128,3 +136,38 @@ def delete(request, id):
     student= get_object_or_404(Student, pk=id)
     student.delete() # delete from students_student where id = id;
     return redirect('students.index')
+
+
+
+def create_via_form(request):
+    form  = StudentForm()
+    if request.method == "POST":
+        print(request.POST)
+        # I need to use the form to validate input
+        form  = StudentForm(request.POST,request.FILES)
+        if form.is_valid():
+            # prepare data storage, trim whitespaces,
+            # string  --> casted to int --> convert empty values to None,
+            print(form.cleaned_data)
+            name = form.cleaned_data.get("name")
+            email = form.cleaned_data.get("email", "")
+            age = form.cleaned_data.get("age", "")
+            grade = form.cleaned_data.get("grade", "")
+            gender = form.cleaned_data.get("gender", "m").strip() or "m"
+            image = form.cleaned_data.get("image")
+            department = form.cleaned_data.get("department")
+            # department = Department.objects.filter(pk=department).first()
+
+            student = Student(
+                name=name,
+                email=email,
+                age=int(age) if age else 10,
+                grade=int(grade) if grade else 0,
+                image=image or None,
+                gender=gender if gender in {"m", "f"} else "m",
+                department=department or None
+            )
+            student.save()
+            return redirect(student.show_url)
+
+    return render(request, "students/create_via_form.html", {"form": form})
