@@ -3,7 +3,7 @@ from django.http import HttpResponse
 
 from departments.models import Department
 from students.models import Student
-from students.forms import StudentForm
+from students.forms import StudentForm, StudentModelForm
 
 # Create your views here.
 
@@ -139,35 +139,48 @@ def delete(request, id):
 
 
 
+# def create_via_form(request):
+#     form  = StudentForm()
+#     if request.method == "POST":
+#         print(request.POST)
+#         # I need to use the form to validate input
+#         form  = StudentForm(request.POST,request.FILES)
+#         if form.is_valid():
+#             # prepare data storage, trim whitespaces,
+#             # string  --> casted to int --> convert empty values to None,
+#             print(form.cleaned_data)
+#             name = form.cleaned_data.get("name")
+#             email = form.cleaned_data.get("email", "")
+#             age = form.cleaned_data.get("age", "")
+#             grade = form.cleaned_data.get("grade", "")
+#             gender = form.cleaned_data.get("gender", "m").strip() or "m"
+#             image = form.cleaned_data.get("image")
+#             department = form.cleaned_data.get("department")
+#             # department = Department.objects.filter(pk=department).first()
+#
+#             student = Student(
+#                 name=name,
+#                 email=email,
+#                 age=int(age) if age else 10,
+#                 grade=int(grade) if grade else 0,
+#                 image=image or None,
+#                 gender=gender if gender in {"m", "f"} else "m",
+#                 department=department or None
+#             )
+#             student.save()
+#             return redirect(student.show_url)
+#
+#     return render(request, "students/create_via_form.html", {"form": form})
+
+
 def create_via_form(request):
-    form  = StudentForm()
+    form  = StudentModelForm()
     if request.method == "POST":
         print(request.POST)
         # I need to use the form to validate input
-        form  = StudentForm(request.POST,request.FILES)
+        form  = StudentModelForm(request.POST,request.FILES)
         if form.is_valid():
-            # prepare data storage, trim whitespaces,
-            # string  --> casted to int --> convert empty values to None,
-            print(form.cleaned_data)
-            name = form.cleaned_data.get("name")
-            email = form.cleaned_data.get("email", "")
-            age = form.cleaned_data.get("age", "")
-            grade = form.cleaned_data.get("grade", "")
-            gender = form.cleaned_data.get("gender", "m").strip() or "m"
-            image = form.cleaned_data.get("image")
-            department = form.cleaned_data.get("department")
-            # department = Department.objects.filter(pk=department).first()
-
-            student = Student(
-                name=name,
-                email=email,
-                age=int(age) if age else 10,
-                grade=int(grade) if grade else 0,
-                image=image or None,
-                gender=gender if gender in {"m", "f"} else "m",
-                department=department or None
-            )
-            student.save()
+            student = form.save()
             return redirect(student.show_url)
 
     return render(request, "students/create_via_form.html", {"form": form})
