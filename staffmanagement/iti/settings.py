@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'students.apps.StudentsConfig',  # more clean structure
     'departments.apps.DepartmentsConfig',
     'django_cleanup.apps.CleanupConfig',
+    "rest_framework",
 ]
 
 MIDDLEWARE = [
