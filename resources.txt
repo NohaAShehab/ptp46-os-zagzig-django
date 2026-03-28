@@ -83,7 +83,7 @@ Django forms
         ->> define validation rules
         https://docs.djangoproject.com/en/6.0/topics/forms/
 class based views
-
+https://docs.djangoproject.com/en/6.0/topics/class-based-views/
 ===
 introduction to DRF --> Django rest framework
 

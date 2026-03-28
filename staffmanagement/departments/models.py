@@ -1,4 +1,5 @@
 from django.db import models
+from django.shortcuts import reverse
 
 # Create your models here.
 
@@ -18,3 +19,7 @@ class Department(models.Model):
     @property
     def logo_url(self):
         return  f'/media/{self.logo}'
+
+    @property
+    def show_url(self):
+        return reverse('departments.show', kwargs={'pk': self.pk})
